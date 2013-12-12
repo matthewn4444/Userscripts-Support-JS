@@ -1,14 +1,22 @@
-function isArray(o) {
-    return Object.prototype.toString.call( o ) === '[object Array]';
+if (typeof isArray === "undefined") {
+    window.isArray = function(o) {
+        return Object.prototype.toString.call( o ) === '[object Array]';
+    }
 }
-function isObject(o) {
-    return Object.prototype.toString.call( o ) === '[object Object]';
+if (typeof isObject === "undefined") {
+    window.isObject = function(o) {
+        return Object.prototype.toString.call( o ) === '[object Object]';
+    }
 }
-function isString(o) {
-    return Object.prototype.toString.call( o ) === '[object String]';
+if (typeof isString === "undefined") {
+    window.isString = function(o) {
+        return Object.prototype.toString.call( o ) === '[object String]';
+    }
 }
-function isFunction(o) {
-    return o && Object.prototype.toString.call( o ) === '[object Function]';
+if (typeof isFunction === "undefined") {
+    window.isFunction = function(o) {
+        return o && Object.prototype.toString.call( o ) === '[object Function]';
+    }
 }
 
 /*==================================*\
@@ -128,16 +136,6 @@ implement(Array, {
         if(!fn || !isFunction(fn)) return;
         for (var i=this.length-1;i>=0;--i) 
             fn(i, this[i]); 
-    },
-});
-
-// Object
-implement(Object, {
-    each: function(fn) {
-        if (!fn && !isFunction(fn))
-            for (var i in this)
-                if (this.hasOwnProperty(i))
-                    fn(i, this[i]);
     },
 });
 })();
