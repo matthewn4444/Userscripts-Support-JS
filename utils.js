@@ -1,4 +1,4 @@
-if (typeof get !== "undefined") {
+if (typeof get === "undefined") {
 window.get = function(url, callback) {
     callback = callback || function(){};
     function onload(response) {
