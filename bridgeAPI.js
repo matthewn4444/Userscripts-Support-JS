@@ -174,12 +174,12 @@ window.BRIDGE = {
         return this;
     },
     css: function(cssJson) {
-         var cssString = "",
+        var cssString = "",
             propString = "",
             eachSelector = "",
             style = document.createElement("style");
-        for(var selector in CSS) {
-            eachSelector = CSS[selector];
+        for(var selector in cssJson) {
+            eachSelector = cssJson[selector];
             propString = "";
             for(var property in eachSelector) {
                 propString += property + ":" + eachSelector[property] + ";";
