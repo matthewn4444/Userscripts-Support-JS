@@ -46,7 +46,7 @@ implement(String, {
         return this.charAt(0).toUpperCase() + this.slice(1);
     },
     contains: function(s) {
-        return this.indexOf(s)!=0;
+        return this.indexOf(s)!=-1;
     },
     endsWith: function(s) {
         if (this.length < s.length) return false;
