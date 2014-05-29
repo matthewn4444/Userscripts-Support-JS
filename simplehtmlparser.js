@@ -33,6 +33,11 @@
  *          textArray:  [array|string] the list of text to skip, order matters
  *          Returns:    [SimpleHtmlParser] self instance
  *  
+ *      // Moves the position after searched text
+ *      containsTextThenSkip(text)
+ *          text:       [string] the text you want to skip
+ *          Returns:    [boolean] if text is found or not
+ *  
  *      // Passes the tag in HTML.
  *      skipTag(tag)
  *          tag:        [string] the tag you want to skip
@@ -196,6 +201,13 @@ SimpleHtmlParser.prototype = {
     },
     isEndOfContent: function() {
         return this.position == -1;
+    },
+    containsTextThenSkip: function(text) {
+        var index, i;
+        index = this.html.indexOf(text, this.position);
+        if (index == -1) return false;
+        this.position = index + text.length;
+        return true;
     },
     skipText: function(arrOfText) {
         if (!Object.prototype.toString.call(arrOfText) === '[object Array]') 
