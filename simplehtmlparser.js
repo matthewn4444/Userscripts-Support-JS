@@ -180,13 +180,13 @@ SimpleHtmlParser.prototype = {
                 GM_xmlhttpRequest({
                     method:"GET",
                     url: url,
-                    overrideMimeType: 'text/plain; charset=x-user-defined',
+                    overrideMimeType: 'text/plain; charset=utf-8',
                     onload: onload
                 });
             } else {
                 var req = new XMLHttpRequest();
                 req.open("GET", url, true);
-                req.overrideMimeType('text/plain; charset=x-user-defined');
+                req.overrideMimeType('text/plain; charset=utf-8');
                 req.onload = function(e) {
                     if (e) {
                         onload(e.target);
