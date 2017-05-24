@@ -154,7 +154,7 @@ SimpleHtmlParser.prototype = {
                 positions[i] = text.indexOf(stringsArr[i], indexFrom);
                 
                 // Record the index if this came first
-                if (positions[i] < smallest) {
+                if (positions[i] < smallest && positions[i] >= 0) {
                     smallestIndex = i;
                     smallest = positions[i];
                 }
