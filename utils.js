@@ -2,15 +2,17 @@ if (typeof get === "undefined") {
 window.get = function(url, callback) {
     callback = callback || function(){};
     function onload(response) {
-        if (response && response.status === 200) {
+        if (response && (response.status === 200 || response.responseText != null)) {
             callback(response.responseText);
         } else {	
             callback(null);
         }
     }
-    if (typeof GM_xmlhttpRequest !== "undefined") {
+    var gmXMLRequest = typeof GM.xmlHttpRequest !== "undefined"
+        ? GM.xmlHttpRequest : GM_xmlhttpRequest;
+    if (typeof gmXMLRequest !== "undefined") {
         // Cross domain
-        GM_xmlhttpRequest({
+        gmXMLRequest({
             method:"GET",
             url: url,
             overrideMimeType: 'text/plain; charset=x-user-defined',
