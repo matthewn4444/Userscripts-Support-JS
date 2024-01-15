@@ -210,7 +210,7 @@ SimpleHtmlParser.prototype = {
         return true;
     },
     skipText: function(arrOfText) {
-        if (!Object.prototype.toString.call(arrOfText) === '[object Array]') 
+        if (Object.prototype.toString.call(arrOfText) !== '[object Array]') 
             arrOfText = [arrOfText + ""];
         var index, i, text;
         for (i = 0; i < arrOfText.length; i++) {
